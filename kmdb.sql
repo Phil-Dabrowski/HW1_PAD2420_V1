@@ -101,15 +101,135 @@
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
+ DROP TABLE IF EXISTS actors;
+ DROP TABLE IF EXISTS movies;
+
+
+
+
 
 -- Create new tables, according to your domain model
--- TODO!
-
 -- Insert data into your database that reflects the sample data shown above
+-- TODO!
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
+CREATE TABLE actors (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  actor TEXT,
+  character_name TEXT
+);
 
--- Prints a header for the movies output
+CREATE TABLE movies (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  movie_title TEXT,
+  year_filmed INTEGER,
+  mpaa TEXT,
+  studio TEXT
+
+);
+--- INSERTING ACTOR DATA
+INSERT INTO actors (
+    "actor",
+    "character_name"
+    ) VALUES (
+        "Christian Bale",
+        "Bruce Wayne"
+        );
+
+INSERT INTO actors (
+    "actor",
+    "character_name"
+    ) VALUES (
+        "Michael Caine",
+        "Alfred"
+        );     
+
+ INSERT INTO actors (
+    "actor",
+    "character_name"
+    ) VALUES (
+        "Liam Neeson",
+        "Ra's Al Ghul"
+        );  
+
+INSERT INTO actors (
+    "actor",
+    "character_name"
+    ) VALUES (
+        "Katie Holmes",
+        "Rachel Dawes"
+        );  
+
+INSERT INTO actors (
+    "actor",
+    "character_name"
+    ) VALUES (
+        "Gary Oldman",
+        "Commissioner Gordon"
+        );   
+
+        INSERT INTO actors (
+    "actor",
+    "character_name"
+    ) VALUES (
+        "Heath Ledger",
+        "Joker"
+        );  
+
+INSERT INTO actors (
+    "actor",
+    "character_name"
+    ) VALUES (
+        "Aaron Eckhart",
+        "Harvey Dent"
+        );   
+
+INSERT INTO actors (
+    "actor",
+    "character_name"
+    ) VALUES (
+        "Maggie Gyllenhaal",
+        "Rachel Dawes"
+        );   
+
+INSERT INTO actors (
+    "actor",
+    "character_name"
+    ) VALUES (
+        "Tom Hardy",
+        "Bane"
+        );   
+
+INSERT INTO actors (
+    "actor",
+    "character_name"
+    ) VALUES (
+        "Joseph Gordon-Levitt",
+        "John Blake"
+        );   
+
+INSERT INTO actors (
+    "actor",
+    "character_name"
+    ) VALUES (
+        "Anne Hathaway",
+        "Selina Kyle"
+        );   
+
+
+
+
+-- INSERT Movie Data
+INSERT INTO movies (
+    "movie_title",
+    "year_filmed",
+    "mpaa",
+    "studio"
+    ) VALUES (
+        "Batman Begins",
+        "2005"
+        );
+--Prints a header for the movies output
 .print "Movies"
 .print "======"
 .print ""
