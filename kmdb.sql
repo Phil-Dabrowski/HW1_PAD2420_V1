@@ -97,7 +97,7 @@
 
 -- Turns column mode on but headers off
 .mode column
-.headers on
+--.headers on
 .width 20 30 20 20 20 20 20 20 20 20 20 
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
@@ -220,7 +220,10 @@ INSERT INTO character_names (
 .print "Movies"
 .print "======"
 .print ""
-
+SELECT movies.movie_title, movies.year_filmed, movies.mpaa, studios.studio
+FROM movies INNER JOIN studios ON movies.studio_id = studios.id
+GROUP BY movies.movie_title
+ORDER BY movies.year_filmed;
 -- The SQL statement for the movies output
 -- TODO!
 
@@ -229,7 +232,13 @@ INSERT INTO character_names (
 .print "Top Cast"
 .print "========"
 .print ""
-
+SELECT movies.movie_title, actors.actor, character_names.character_name
+--SELECT actors.actor, character_names.character_name
+FROM character_names INNER JOIN actors ON character_names.actor_id = actors.id
+INNER JOIN movies ON character_names.movie_id = movies.id
+ORDER BY movies.movie_title
+--ORDER BY movies.year_filmed
+;
 
 -- The SQL statement for the cast output
 -- TODO!
