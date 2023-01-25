@@ -97,12 +97,16 @@
 
 -- Turns column mode on but headers off
 .mode column
-.headers off
+.headers on
+.width 20 30 20 20 20 20 20 20 20 20 20 
 
 -- Drop existing tables, so you'll start fresh each time this script is run.
 -- TODO!
  DROP TABLE IF EXISTS actors;
  DROP TABLE IF EXISTS movies;
+ DROP TABLE IF EXISTS studios;
+ DROP TABLE IF EXISTS character_names;
+
 
 
 
@@ -115,8 +119,7 @@
 -- TODO!
 CREATE TABLE actors (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  actor TEXT,
-  character_name TEXT
+  actor TEXT
 );
 
 CREATE TABLE movies (
@@ -124,99 +127,37 @@ CREATE TABLE movies (
   movie_title TEXT,
   year_filmed INTEGER,
   mpaa TEXT,
-  studio TEXT
-
+  studio_id INTEGER
 );
+
+CREATE TABLE studios (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  studio TEXT
+);
+
+CREATE TABLE character_names (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  character_name TEXT,
+  actor_id INTEGER,
+  movie_id INTEGER  
+);
+
 --- INSERTING ACTOR DATA
 INSERT INTO actors (
-    "actor",
-    "character_name"
-    ) VALUES (
-        "Christian Bale",
-        "Bruce Wayne"
-        );
-
-INSERT INTO actors (
-    "actor",
-    "character_name"
-    ) VALUES (
-        "Michael Caine",
-        "Alfred"
-        );     
-
- INSERT INTO actors (
-    "actor",
-    "character_name"
-    ) VALUES (
-        "Liam Neeson",
-        "Ra's Al Ghul"
-        );  
-
-INSERT INTO actors (
-    "actor",
-    "character_name"
-    ) VALUES (
-        "Katie Holmes",
-        "Rachel Dawes"
-        );  
-
-INSERT INTO actors (
-    "actor",
-    "character_name"
-    ) VALUES (
-        "Gary Oldman",
-        "Commissioner Gordon"
-        );   
-
-        INSERT INTO actors (
-    "actor",
-    "character_name"
-    ) VALUES (
-        "Heath Ledger",
-        "Joker"
-        );  
-
-INSERT INTO actors (
-    "actor",
-    "character_name"
-    ) VALUES (
-        "Aaron Eckhart",
-        "Harvey Dent"
-        );   
-
-INSERT INTO actors (
-    "actor",
-    "character_name"
-    ) VALUES (
-        "Maggie Gyllenhaal",
-        "Rachel Dawes"
-        );   
-
-INSERT INTO actors (
-    "actor",
-    "character_name"
-    ) VALUES (
-        "Tom Hardy",
-        "Bane"
-        );   
-
-INSERT INTO actors (
-    "actor",
-    "character_name"
-    ) VALUES (
-        "Joseph Gordon-Levitt",
-        "John Blake"
-        );   
-
-INSERT INTO actors (
-    "actor",
-    "character_name"
-    ) VALUES (
-        "Anne Hathaway",
-        "Selina Kyle"
-        );   
-
-
+    "actor"
+    )
+    VALUES
+    ("Christian Bale"),
+    ("Michael Caine"),
+    ("Liam Neeson"),
+    ("Katie Holmes"),
+    ("Gary Oldman"),
+    ("Heath Ledger"),
+    ("Aaron Eckhart"),
+    ("Maggie Gyllenhaal"),
+    ("Tom Hardy"),
+    ("Joseph Gordon-Levitt"),
+    ("Anne Hathaway");
 
 
 -- INSERT Movie Data
@@ -224,11 +165,57 @@ INSERT INTO movies (
     "movie_title",
     "year_filmed",
     "mpaa",
-    "studio"
-    ) VALUES (
-        "Batman Begins",
-        "2005"
+    "studio_id"
+    ) VALUES 
+    ("Batman Begins",
+    "2005",
+     "PG-13",
+     "1" 
+     ),
+    (   "The Dark Knight",
+        "2008",
+        "PG-13",
+        "1"
+        ),
+        
+    (
+        "The Dark Knight Rises",
+        "2012",
+        "PG-13",
+        "1"
         );
+
+-- INSERT STUDIOS
+INSERT INTO studios (
+    "studio"
+    )
+    VALUES
+    ("Warner Bros.");
+
+-- INSERT Character Names
+INSERT INTO character_names (
+    "character_name",
+    "actor_id",
+    "movie_id"
+    )
+    VALUES
+    ("Bruce Wayne", "1", "1"),
+    ("Bruce Wayne", "1", "2"),
+    ("Bruce Wayne", "1", "3"),
+    ("Alfred","2","1"),
+    ("Alfred","2","2"),
+    ("Ra's Al Ghul", "3","1"),
+    ("Rachel Dawes","4","1"),
+    ("Commissioner Gordon","5","1"),
+    ("Commissioner Gordon","5","3"),
+    ("Joker","6","2"),
+    ("Harvey Dent","7","2"),
+    ("Rachel Dawes","8","2"),
+    ("Bane","9","3"),
+    ("John Blake","10","3"),
+    ("Selina Kyle","11","3");
+
+    ;
 --Prints a header for the movies output
 .print "Movies"
 .print "======"
